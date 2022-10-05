@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+	{{ category.title }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="list-group">
+	{% for item in news %}
+	<div class="card mb-3">
+		<div class="card-header">
+			Категория: {{ item.category }}
+		</div>
+		<div class="card-body">
+			<div class="media">
+				{% if item.photo %}
+					<img src="{{ item.photo.url }}" alt="" width="200" class="mr-3">
+				{% else %}
+					<img src="https://w7.pngwing.com/pngs/998/203/png-transparent-black-and-white-no-to-camera-logo-video-on-demand-retail-website-simple-no-miscellaneous-television-text.png" alt="" width="200" class="mr-3">
+				{% endif %}
+				<div class="media_body">
+					<h5 class="card-title">{{ item.title }}</h5>
+					<p class="card-text">{{ item.content|truncatewords:30 }}</p>
+					<a href="{{ item.get_absolute_url }}" class="btn btn-primary">Смотреть...</a>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-muted">
+			{{ item.created_at|timesince}}
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
