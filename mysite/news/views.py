@@ -33,7 +33,6 @@ class News_Category(ListView):
     def get_queryset(self):
         return News.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
 
-
 # def index(request):
 #     news = News.objects.all()
 #     context = {
@@ -47,7 +46,6 @@ class News_Category(ListView):
 #     category = Category.objects.get(pk=category_id)
 #     return render(request, 'news/category.html', {'news': news, 'category': category})
 
-
 class ViewNews(DetailView):
     model = News
     # template_name = 'news/news_detail.html'
@@ -58,7 +56,6 @@ class ViewNews(DetailView):
 #     # news_item = News.objects.get(pk=news_id)
 #     news_item = get_object_or_404(News, pk=news_id)
 #     return render(request, "news/view_news.html", {'news_item':news_item})
-
 
 # def add_news(request):
 #     if request.method == 'POST':
