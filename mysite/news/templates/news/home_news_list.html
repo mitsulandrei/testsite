@@ -28,7 +28,8 @@
 		</div>
 	</div>
 	<div class="card-footer text-muted">
-		{{ item.created_at|timesince}}
+		<p>{{ item.created_at|timesince}}</p>
+		<p>Просмотров: {{item.views}}</p>
 	</div>
 </div>
 {% endfor %}

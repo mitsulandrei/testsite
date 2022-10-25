@@ -1,4 +1,6 @@
 from django import forms
+from pip._vendor.urllib3.util.url import url_attrs
+
 from .models import News
 import re
 from django.core.exceptions import ValidationError
@@ -15,7 +17,7 @@ from django.core.exceptions import ValidationError
 class NewsForm(forms.ModelForm):
     class Meta:
         model = News
-        fields = ['title', 'content', 'is_published', 'category']
+        fields = ['title', 'content', 'is_published', 'photo', 'category']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows':5}),
